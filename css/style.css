@@ -1,0 +1,490 @@
+body {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
+  cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur114.cur'), auto;
+}
+
+header {
+  background-color: #111;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem; /* Трішки менший */
+  color: #00ffd5; /* Бірюзовий - гармонійно виглядає */
+  font-family: 'Courier New', monospace;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+}
+
+nav a {
+  color: #00ff00;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem; /* Трішки зменшено */
+}
+
+.intro, main {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: #00ff00;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #00cc00;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #111;
+  color: #777;
+}
+
+.file-card {
+  background: #222;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 60%;
+  border: 1px dashed #00ff00;
+  cursor: pointer;
+}
+
+.hidden-file {
+  display: none;
+  margin-top: 1rem;
+}
+
+.actor-grid, .product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.actor-card, .product-card {
+  background: #1a1a1a;
+  border: 1px solid #00ff00;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.actor-card img, .product-card img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.actor-card img {
+  height: 300px;
+}
+
+.product-card img {
+  height: 400px;
+}
+
+.actor-card h3, .product-card h3 {
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+}
+
+.actor-card p, .product-card p {
+  font-size: 0.9rem;
+}
+
+.actor-card:hover, .product-card:hover {
+  transform: scale(1.05);
+}
+
+nav li {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background: #111;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid #00ff00;
+  z-index: 1000;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #00ff00;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #222;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.movie-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border-bottom: 1px solid #333;
+  flex-wrap: wrap;
+}
+
+.movie-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.movie-section img {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.movie-info {
+  max-width: 600px;
+}
+
+.movie-info h3 {
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+}
+
+.movie-info p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.movie-info button {
+  background: #00ff00;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.movie-info button:hover {
+  background: #00cc00;
+}
+
+.shop-sections {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.shop-section {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 30px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+  transition: transform 0.3s;
+  text-align: center;
+  cursor: pointer;
+}
+
+.shop-section:hover {
+  transform: scale(1.05);
+}
+
+.shop-section img {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.shop-section h3 {
+  margin-top: 10px;
+  font-size: 1.5em;
+  color: #00ff00;
+}
+
+.lego-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.lego-item {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+}
+
+.lego-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 255, 0, 0.4);
+}
+
+.lego-item img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.lego-item h3 {
+  margin-top: 10px;
+  font-size: 1.5em;
+  color: #00ff00;
+}
+
+.lego-item p {
+  font-size: 1em;
+  color: #bbb;
+}
+
+.lego-item-info button {
+  background: #00ff00;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.lego-item-info button:hover {
+  background: #00cc00;
+}
+
+.timeline-container {
+  position: relative;
+  margin: 50px auto;
+  width: 90%;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+}
+
+.timeline-progress {
+  position: absolute;
+  height: 6px;
+  background: #00ff00;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.5s;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  background: #555;
+  border: 2px solid #00ff00;
+  border-radius: 50%;
+  position: absolute;
+  top: -7px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.timeline-dot.unlocked {
+  background: #00ff00;
+}
+
+.puzzle-box, .event-description {
+  margin-top: 30px;
+  background: #1a1a1d;
+  padding: 20px;
+  border-radius: 10px;
+  display: none;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background: #0b0b0f;
+  border: 1px solid #00ff00;
+  color: white;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #00ff00;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #00cc00;
+}
+
+.game-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.game-item {
+  width: 300px;
+  border: 2px solid #00ff00;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  background: #111;
+  padding-bottom: 10px;
+}
+
+.game-item:hover {
+  transform: scale(1.05);
+}
+
+.game-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #00ff00;
+}
+
+p {
+  text-align: center;
+  color: #ccc;
+}
+
+.input-field {
+  display: block;
+  margin: 15px auto;
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  font-size: 16px;
+  border: 2px solid #00ff00;
+  background: #000;
+  color: #00ff00;
+  border-radius: 10px;
+}
+
+.community-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00ff00;
+}
+
+.community-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #00ff00;
+  margin-bottom: 1rem;
+}
+
+.community-description {
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.discussion-board {
+  background: #111;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.discussion-board h3 {
+  color: #00ff00;
+  margin-bottom: 1rem;
+}
+
+.message-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: #222;
+  color: #fff;
+}
+
+.post-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.post-btn:hover {
+  background-color: #00cc00;
+}
+
+.messages {
+  margin-top: 2rem;
+}
+
+.message {
+  background: #222;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  color: #ccc;
+  box-shadow: 0 0 5px #00ff00;
+}
