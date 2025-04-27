@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Games - Shadow Protocol</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <h1>Shadow Protocol</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="storyline.html">Storyline</a></li>
+      <li><a href="games.html" class="active">Games</a></li>
+      <li class="dropdown">
+        <a href="actors.html">Characters</a>
+        <ul class="dropdown-menu">
+          <li><a href="actors-main.html">Main Characters</a></li>
+          <li><a href="actors-secondary.html">Secondary Characters</a></li>
+        </ul>
+      </li>
+      <li><a href="community.html">Community</a></li>
+      <li class="dropdown">
+        <a href="shop.html">Shop</a>
+        <ul class="dropdown-menu">
+          <li><a href="shop-books.html">Books</a></li>
+          <li><a href="shop-lego.html">LEGO</a></li>
+          <li><a href="shop-clothes.html">Clothes</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main id="mainContent">
+  <h2>Games</h2>
+  <p>Decrypt messages, hack systems, and survive missions.</p>
+
+  <div class="game-list">
+    <div class="game-item" onclick="showGameIntro('decryptor')">
+      <img src="images/games/decryptor.jpg" alt="Decryptor" class="game-img">
+      <h3>Decryptor</h3>
+      <p>Crack secret codes and reveal hidden messages.</p>
+    </div>
+    <div class="game-item" onclick="showGameIntro('hack-system')">
+      <img src="images/games/hack.jpg" alt="Hack the System" class="game-img">
+      <h3>Hack the System</h3>
+      <p>Override the mainframe before time runs out.</p>
+    </div>
+    <div class="game-item" onclick="showGameIntro('escape-protocol')">
+      <img src="images/games/escape.jpg" alt="Escape Protocol" class="game-img">
+      <h3>Escape Protocol</h3>
+      <p>Choose the right path and escape the trap.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Shadow Protocol</p>
+</footer>
+
+<script>
+
+function showGameIntro(gameName) {
+  const main = document.getElementById('mainContent');
+
+  let introText = "";
+  if (gameName === 'decryptor') {
+    introText = "Decode encrypted messages and reveal hidden secrets.";
+  } else if (gameName === 'hack-system') {
+    introText = "Bypass the mainframe security before time runs out.";
+  } else if (gameName === 'escape-protocol') {
+    introText = "Find the safest exit using clues and escape alive.";
+  }
+
+  main.innerHTML = `
+    <h2>Game Preview</h2>
+    <p>${introText}</p>
+    <button class="btn" onclick="loadGame('${gameName}')">Start Game</button>
+    <button class="btn-back" onclick="goBack()">← Back to Games</button>
+  `;
+}
+
+
+function loadGame(gameName) {
+  const main = document.getElementById('mainContent');
+
+  if (gameName === 'decryptor') {
+    main.innerHTML = `
+      <h3>Decryptor</h3>
+      <p><strong>Task:</strong> Decode the secret word: <span id="encrypted">EATNG</span></p>
+      <input type="text" id="answer" class="input-field" placeholder="Enter decrypted word...">
+      <button class="btn" onclick="checkAnswer()">Submit</button>
+      <p id="result"></p>
+      <button class="btn-back" onclick="goBack()">← Back to Games</button>
+    `;
+  } else if (gameName === 'hack-system') {
+    main.innerHTML = `
+      <h3>Hack the System</h3>
+      <p>System is locked. You have 30 seconds to enter the correct override code: <strong>*****</strong></p>
+      <div id="timer">Time left: 30s</div>
+      <input type="text" id="hackInput" class="input-field" placeholder="Enter override code...">
+      <button class="btn" onclick="checkHack()">Hack</button>
+      <p id="hackResult"></p>
+      <button class="btn-back" onclick="goBack()">← Back to Games</button>
+    `;
+    startTimer();
+  } else if (gameName === 'escape-protocol') {
+    main.innerHTML = `
+      <h3>Escape Protocol</h3>
+      <p>You have 3 doors: <strong>Red, Green, Blue</strong>. Only one is safe based on this clue: "The safest way is as calm as the ocean."</p>
+      <button class="btn" onclick="chooseDoor('red')">Red Door</button>
+      <button class="btn" onclick="chooseDoor('green')">Green Door</button>
+      <button class="btn" onclick="chooseDoor('blue')">Blue Door</button>
+      <p id="doorResult"></p>
+      <button class="btn-back" onclick="goBack()">← Back to Games</button>
+    `;
+  }
+}
+
+
+function checkAnswer() {
+  const userAnswer = document.getElementById('answer').value.toUpperCase();
+  const correctAnswer = "AGENT";
+  const result = document.getElementById('result');
+
+  if (userAnswer === correctAnswer) {
+    result.innerHTML = "<span style='color: #00ff00;'>Correct! Access Granted.</span>";
+  } else {
+    result.innerHTML = "<span style='color: #ff0000;'>Incorrect. Try Again.</span>";
+  }
+}
+
+
+function startTimer() {
+  let timeLeft = 30;
+  const timer = document.getElementById('timer');
+
+  const interval = setInterval(() => {
+    timeLeft--;
+    timer.textContent = `Time left: ${timeLeft}s`;
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      document.getElementById('hackResult').innerHTML = "<span style='color: #ff0000;'>Time's up! System locked!</span>";
+    }
+  }, 1000);
+}
+
+
+function checkHack() {
+  const hackCode = document.getElementById('hackInput').value.toUpperCase();
+  const correctCode = "20304";
+
+  if (hackCode === correctCode) {
+    document.getElementById('hackResult').innerHTML = "<span style='color: #00ff00;'>System Hacked Successfully!</span>";
+  } else {
+    document.getElementById('hackResult').innerHTML = "<span style='color: #ff0000;'>Wrong Code. Try again!</span>";
+  }
+}
+
+
+function chooseDoor(door) {
+  const safeDoor = "blue";
+  const result = document.getElementById('doorResult');
+
+  if (door === safeDoor) {
+    result.innerHTML = "<span style='color: #00ff00;'>You Escaped Safely!</span>";
+  } else {
+    result.innerHTML = "<span style='color: #ff0000;'>Wrong door! You've been caught!</span>";
+  }
+}
+
+function goBack() {
+  location.reload();
+}
+</script>
+
+</body>
+</html>

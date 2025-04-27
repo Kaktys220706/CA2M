@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Storyline - Shadow Protocol</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <h1>Shadow Protocol</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="storyline.html">Storyline</a></li>
+      <li><a href="games.html">Games</a></li>
+		<li class="dropdown">
+        <a href="actors.html">Characters</a>
+        <ul class="dropdown-menu">
+          <li><a href="actors-main.html">Main Characters</a></li>
+          <li><a href="actors-secondary.html">Secondary Characters</a></li>
+        </ul>
+      </li>
+      <li><a href="community.html">Community</a></li>
+      <li class="dropdown">
+        <a href="shop.html">Shop</a>
+        <ul class="dropdown-menu">
+          <li><a href="shop-books.html">Books</a></li>
+          <li><a href="shop-lego.html">LEGO</a></li>
+          <li><a href="shop-clothes.html">Clothes</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h2>Storyline</h2>
+  <p>An agent uncovers a global conspiracy. Put yourself in his shoes. Each decrypted file will bring you closer to the truth. Decipher each mystery to reveal the true story hidden in the shadows.</p>
+
+  <div class="timeline-container">
+    <div class="timeline-progress" id="timelineProgress"></div>
+    <div class="timeline-dot" id="dot1" style="left: 10%;" onclick="unlockPuzzle(1)"></div>
+    <div class="timeline-dot" id="dot2" style="left: 30%;" onclick="unlockPuzzle(2)"></div>
+    <div class="timeline-dot" id="dot3" style="left: 50%;" onclick="unlockPuzzle(3)"></div>
+    <div class="timeline-dot" id="dot4" style="left: 70%;" onclick="unlockPuzzle(4)"></div>
+    <div class="timeline-dot" id="dot5" style="left: 90%;" onclick="unlockPuzzle(5)"></div>
+  </div>
+
+  <div class="puzzle-box" id="puzzleBox">
+    <h3 id="puzzleTitle">Secret Message</h3>
+    <p id="puzzleQuestion">Decrypt this message:</p>
+    <input type="text" id="puzzleAnswer" placeholder="Enter answer...">
+    <button onclick="submitAnswer()">Submit</button>
+  </div>
+
+  <div class="event-description" id="eventDescription">
+    <h3 id="eventTitle">Mission Stage</h3>
+    <p id="eventText">You have unlocked a part of the truth.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 Shadow Protocol</p>
+</footer>
+
+<script>
+const puzzles = [
+  { 
+    question: "I am your ally in the dark. Who am I?", 
+    answer: "shadow",
+    title: "Start of Mission",
+    description: "The protagonist, a skilled agent, embarks on a mission that reveals signs of a global conspiracy."
+  },
+  { 
+    question: "Decrypt: S P E C T E R (Organization from the shadows)", 
+    answer: "specter",
+    title: "First Clue",
+    description: "While investigating, the agent uncovers the first traces of a dangerous hidden group."
+  },
+  { 
+    question: "What does the agent seek? 🔍🌍⚡", 
+    answer: "truth",
+    title: "Major Discovery",
+    description: "A critical revelation brings the agent closer to exposing the unseen controllers."
+  },
+  { 
+    question: "I was a friend, now I am a traitor. Who am I?", 
+    answer: "ally",
+    title: "Conspiracy Unveiled",
+    description: "The agent faces betrayal but uncovers the full plot hidden in plain sight."
+  },
+  { 
+    question: "Final battle location: Tower or Bridge?", 
+    answer: "tower",
+    title: "End of Mission",
+    description: "The agent ends the mission atop the tower, forever changed by the truths revealed."
+  }
+];
+
+let currentPuzzle = 0;
+
+function unlockPuzzle(dotNumber) {
+  if (dotNumber - 1 === currentPuzzle) {
+    document.getElementById('puzzleBox').style.display = 'block';
+    document.getElementById('puzzleTitle').innerText = "Encrypted Transmission #" + dotNumber;
+    document.getElementById('puzzleQuestion').innerText = puzzles[dotNumber-1].question;
+    document.getElementById('puzzleAnswer').value = "";
+  }
+}
+
+function submitAnswer() {
+  const userAnswer = document.getElementById('puzzleAnswer').value.trim().toLowerCase();
+  if (userAnswer === puzzles[currentPuzzle].answer) {
+    document.getElementById('dot' + (currentPuzzle + 1)).classList.add('unlocked');
+    document.getElementById('timelineProgress').style.width = ((currentPuzzle + 1) * 20) + "%";
+
+    document.getElementById('puzzleBox').style.display = 'none';
+    document.getElementById('eventDescription').style.display = 'block';
+    document.getElementById('eventTitle').innerText = puzzles[currentPuzzle].title;
+    document.getElementById('eventText').innerText = puzzles[currentPuzzle].description;
+
+    currentPuzzle++;
+  } else {
+    alert("Incorrect! Try again, Agent.");
+  }
+}
+</script>
+
+</body>
+</html>
